@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.27)
-set(CMAKE_CXX_STANDARD 20)
 project(search_engine_test VERSION 0.1.0)
 add_executable(search_engine_test 
                             ${SRC}/ConverterJSON.cpp 
@@ -8,14 +6,12 @@ add_executable(search_engine_test
                             ${HEADERS}/ConverterJSON.h 
                             ${HEADERS}/InvertedIndex.h 
                             ${HEADERS}/SearchServer.h
-                            SearchServerTests.cpp)
+        tests.cpp)
 
-include(FetchContent)
-
-FetchContent_Declare(json GIT_REPOSITORY https://github.com/nlohmann/json/ GIT TAG v3.11.3)
-FetchContent_MakeAvailable(json)
+set(JSON_BuildTests OFF CACHE INTERNAL "")
 target_link_libraries(search_engine_test PUBLIC nlohmann_json::nlohmann_json)
 
+include(FetchContent)
 FetchContent_Declare(googletest URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 set(gtest_disable_pthreads ON)
