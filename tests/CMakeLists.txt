@@ -6,7 +6,9 @@ add_executable(search_engine_test
                             ${HEADERS}/ConverterJSON.h 
                             ${HEADERS}/InvertedIndex.h 
                             ${HEADERS}/SearchServer.h
-        tests.cpp)
+        tests.cpp
+        TestSearchServer.cpp
+        TestInvertedIndex.cpp)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 target_link_libraries(search_engine_test PUBLIC nlohmann_json::nlohmann_json)

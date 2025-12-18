@@ -8,7 +8,7 @@
 
 std::vector<std::string> ConverterJSON::GetTextDocuments()
 {
-	std::ifstream config_FILE("config.json");
+	std::ifstream config_FILE("../env/config.json");
 
 	if (!config_FILE.is_open()) throw std::runtime_error("Config file is missing\n");
 
@@ -59,7 +59,7 @@ std::vector<std::string> ConverterJSON::GetTextDocuments()
 
 	for (auto threads_pack : threads_packs)
 		while (threads_pack-- != 0)
-			threads.push_back(std::thread(DOCS_BASE_LOAD, doc_id++));
+			threads.emplace_back(std::thread(DOCS_BASE_LOAD, doc_id++));
 
 	for (int i = 0; i < threads.size(); ++i)
 		threads[i].join();
@@ -69,7 +69,7 @@ std::vector<std::string> ConverterJSON::GetTextDocuments()
 
 int ConverterJSON::GetResponsesLimit()
 {
-	std::ifstream config_FILE("config.json");
+	std::ifstream config_FILE("../env/config.json");
 	nlohmann::json json_data;
 	config_FILE >> json_data;
 	config_FILE.close();
@@ -79,7 +79,7 @@ int ConverterJSON::GetResponsesLimit()
 
 std::vector<std::string> ConverterJSON::GetRequests()
 {
-	std::ifstream requests_FILE("requests.json");
+	std::ifstream requests_FILE("../env/requests.json");
 
 	if (!requests_FILE.is_open())
 		throw std::runtime_error("Request file is missing\n");
@@ -134,7 +134,7 @@ void ConverterJSON::PutAnswers(std::vector<std::vector<struct RelativeIndex>> an
 		}
 	}
 
-	std::ofstream answers_FILE("answers.json", std::ios::trunc);
+	std::ofstream answers_FILE("../env/answers.json", std::ios::trunc);
 	answers_FILE << json_data;
 	answers_FILE.close();
 }

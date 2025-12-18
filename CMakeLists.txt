@@ -3,6 +3,7 @@ project(search_engine VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 20)
 set(HEADERS ${CMAKE_SOURCE_DIR}/include)
 set(SRC ${CMAKE_SOURCE_DIR}/src)
+set(ENV ${CMAKE_SOURCE_DIR}/env)
 add_subdirectory(tests)
 add_subdirectory(nlohmann_json)
 
