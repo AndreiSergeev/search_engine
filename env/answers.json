@@ -1,1 +1,1 @@
-{"answers":{"request0001":{"result":"false"},"request0002":{"result":"false"},"request0003":{"result":"false"},"request0004":{"result":"false"}}}
+{"answers":{"request0001":{"relevance":["docid: 14, rank:1.000000","docid: 3, rank:0.500000"],"result":"true"},"request0002":{"relevance":["docid: 7, rank:1.000000","docid: 14, rank:1.000000","docid: 0, rank:0.666667"],"result":"true"},"request0003":{"result":"false"},"request0004":{"relevance":["docid: 3, rank:1.000000","docid: 14, rank:1.000000"],"result":"true"}}}
